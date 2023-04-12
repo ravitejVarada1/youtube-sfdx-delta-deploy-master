@@ -21,4 +21,4 @@ jobs:
       - name: 'Installing SFDX scanner'
         run: sfdx plugins:install @salesforce/sfdx-scanner
       - name: 'Run SFDX scanner'
-        run: sfdx scanner:run --target /youtube-sfdx-delta-deploy-master/force-app/main/default --outfile results.html
+        run: sfdx scanner:run --target  /force-app/main/default --outfile results.html
