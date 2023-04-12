@@ -20,6 +20,8 @@ jobs:
         run: sfdx force:source:convert --rootdir=force-app --outputdir=convert
       - name: 'Run CD '
         run: pwd
+      - name: 'Installing SFDX scanner'
+        run: sfdx plugins:install @salesforce/sfdx-scanner
       - name: 'get in dir CD '
         run: cd force-app/main
       - name: 'pwd '
