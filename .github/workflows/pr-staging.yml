@@ -20,3 +20,7 @@ jobs:
         run: sfdx force:source:convert --rootdir=force-app --outputdir=convert
       - name: 'Run Test on Metadata'
         run: sfdx force:mdapi:deploy --deploydir=convert --testlevel=RunLocalTests --checkonly -w30
+      - name: 'Installing SFDX scanner'
+        run: sfdx plugins:install @salesforce/sfdx-scanner
+      - name: 'Run SFDX scanner'
+       run: sfdx scanner:run --target /youtube-sfdx-delta-deploy-master/force-app/main/default --outfile results.html
