@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI PMD
+name: CI
 
 on:
   pull_request:
@@ -24,4 +24,3 @@ jobs:
         run: sfdx plugins:install @salesforce/sfdx-scanner
       - name: 'Run SFDX scanner'
        run: sfdx scanner:run --target /youtube-sfdx-delta-deploy-master/force-app/main/default --outfile results.html
-       
