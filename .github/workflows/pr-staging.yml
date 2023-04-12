@@ -21,10 +21,6 @@ jobs:
       - name: 'Run CD '
         run: pwd
       - name: 'get in dir CD '
-        run: cd /home/runner/work/youtube-sfdx-delta-deploy-master/youtube-sfdx-delta-deploy-master/force-app/main
-      - name: 'pwd '
-        run: pwd
-      - name: 'get in dir CD '
         run: cd /youtube-sfdx-delta-deploy-master/youtube-sfdx-delta-deploy-master/force-app/main
       - name: 'pwd '
         run: pwd
