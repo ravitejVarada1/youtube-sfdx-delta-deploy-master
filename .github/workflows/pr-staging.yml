@@ -20,5 +20,7 @@ jobs:
         run: sfdx force:source:convert --rootdir=force-app --outputdir=convert
       - name: 'Installing SFDX scanner'
         run: sfdx plugins:install @salesforce/sfdx-scanner
+      - name: 'Run CD '
+        run: cd  /force-app/main/
       - name: 'Run SFDX scanner'
-        run: sfdx scanner:run --target  /force-app/main/default --outfile results.html
+        run: sfdx scanner:run --target default --outfile results.html
