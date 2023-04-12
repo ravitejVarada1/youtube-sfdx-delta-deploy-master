@@ -18,11 +18,23 @@ jobs:
           sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
       - name: 'Convert Metadata'
         run: sfdx force:source:convert --rootdir=force-app --outputdir=convert
-      - name: 'Installing SFDX scanner'
-        run: sfdx plugins:install @salesforce/sfdx-scanner
       - name: 'Run CD '
         run: pwd
       - name: 'get in dir CD '
         run: cd /home/runner/work/youtube-sfdx-delta-deploy-master/youtube-sfdx-delta-deploy-master/force-app/main
+      - name: 'pwd '
+        run: pwd
+      - name: 'get in dir CD '
+        run: cd /youtube-sfdx-delta-deploy-master/youtube-sfdx-delta-deploy-master/force-app/main
+      - name: 'pwd '
+        run: pwd
+      - name: 'get in dir CD '
+        run: cd force-app/main
+      - name: 'pwd '
+        run: pwd
+      - name: 'get in dir CD '
+        run: cd /youtube-sfdx-delta-deploy-master/force-app/main
+      - name: 'pwd '
+        run: pwd
       - name: 'Run SFDX scanner'
         run: sfdx scanner:run --target default --outfile results.html
