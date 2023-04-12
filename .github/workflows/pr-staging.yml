@@ -21,6 +21,6 @@ jobs:
       - name: 'Installing SFDX scanner'
         run: sfdx plugins:install @salesforce/sfdx-scanner
       - name: 'Run CD '
-        run: cd  '/force-app/main/'
+        run: pwd
       - name: 'Run SFDX scanner'
         run: sfdx scanner:run --target default --outfile results.html
