@@ -22,5 +22,7 @@ jobs:
         run: sfdx plugins:install @salesforce/sfdx-scanner
       - name: 'Run CD '
         run: pwd
+      - name: 'get in dir CD '
+        run: cd /home/runner/work/youtube-sfdx-delta-deploy-master/youtube-sfdx-delta-deploy-master/force-app/main
       - name: 'Run SFDX scanner'
         run: sfdx scanner:run --target default --outfile results.html
