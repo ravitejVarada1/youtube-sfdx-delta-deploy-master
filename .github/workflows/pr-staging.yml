@@ -21,7 +21,7 @@ jobs:
       - name: 'Run CD '
         run: pwd
       - name: 'get in dir CD '
-        run: cd force-app/main/default
+        run: sfdx plugins:install @salesforce/sfdx-scanner
       - name: 'pwd '
         run: pwd
       - name: 'get in dir CD '
