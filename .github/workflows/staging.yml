@@ -7,23 +7,11 @@ on:
     branches: [main]
   workflow_dispatch:
 jobs:
-  analyze:
+  pmd:
+  
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Install SFDX CLI and Scanner
-        run: |
-          npm install sfdx-cli -g
-          sfdx plugins:install @salesforce/sfdx-scanner
-
-      - name: Run SFDX Scanner - Report findings as comments
-        uses: mitchspano/sfdx-scan-pull-request@v0.1.8
-        with:
-          pmdconfig: ruleset.xml
-          severity-threshold: 4
-          strictly-enforced-rules: '[{ "engine": "pmd", "category": "Performance", "rule": "AvoidDebugStatements" }]'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: sfdx-actions/setup-pmd@v1
+      - name: run-pmd
+        run: pmd -d ./force-app/main/default/classes -R category/apex/design.xml -f text
