@@ -21,7 +21,7 @@ jobs:
       - name: 'Run CD '
         run: pwd
       - name: 'get in dir CD '
-        run: cd /force-app/main/default
+        run: cd force-app/main/default
       - name: 'pwd '
         run: pwd
       - name: 'get in dir CD '
