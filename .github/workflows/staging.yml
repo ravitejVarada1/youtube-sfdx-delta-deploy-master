@@ -2,21 +2,29 @@
 
 name: CI
 
+name: Static Analysis
 on:
   pull_request:
-    branches: [ staging ]
-
+    branches: [main]
+  workflow_dispatch:
 jobs:
-  build:
-  
+  analyze:
     runs-on: ubuntu-latest
-    
     steps:
-      - uses: actions/checkout@v2
-      - uses: sfdx-actions/setup-sfdx@v1
+      - uses: actions/checkout@v3
         with:
-          sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
-      - name: 'Convert Metadata'
-        run: sfdx force:source:convert --rootdir=force-app --outputdir=convert
-      - name: 'Run Test on Metadata'
-        run: sfdx force:mdapi:deploy --deploydir=convert -w 30
+          fetch-depth: 0
+
+      - name: Install SFDX CLI and Scanner
+        run: |
+          npm install sfdx-cli -g
+          sfdx plugins:install @salesforce/sfdx-scanner
+
+      - name: Run SFDX Scanner - Report findings as comments
+        uses: mitchspano/sfdx-scan-pull-request@v0.1.8
+        with:
+          pmdconfig: ruleset.xml
+          severity-threshold: 4
+          strictly-enforced-rules: '[{ "engine": "pmd", "category": "Performance", "rule": "AvoidDebugStatements" }]'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
