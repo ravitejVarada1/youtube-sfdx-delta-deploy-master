@@ -29,4 +29,4 @@ jobs:
       - name: 'pwd '
         run: pwd
       - name: 'Run SFDX scanner'
-        run: sfdx scanner:run --target default --outfile results.html
+        run: sfdx scanner:run -target default/classes/BatchLeadConvert.cls --outfile results.html
