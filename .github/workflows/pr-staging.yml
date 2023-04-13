@@ -23,7 +23,7 @@ jobs:
       - name: 'Installing SFDX scanner'
         run: sfdx plugins:install @salesforce/sfdx-scanner
       - name: 'get in dir CD '
-        run: cd force-app/main
+        run: cd /youtube-sfdx-delta-deploy-master/force-app/main
       - name: 'pwd '
         run: pwd
       - name: 'get in dir CD '
