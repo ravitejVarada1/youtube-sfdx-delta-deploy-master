@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI PMD
+name: CI
 
 on:
   pull_request:
@@ -8,9 +8,9 @@ on:
 
 jobs:
   build:
-
+  
     runs-on: ubuntu-latest
-
+    
     steps:
       - uses: actions/checkout@v2
       - uses: sfdx-actions/setup-sfdx@v1
@@ -18,20 +18,8 @@ jobs:
           sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
       - name: 'Convert Metadata'
         run: sfdx force:source:convert --rootdir=force-app --outputdir=convert
-      - name: 'Run Test on Metadata'
-        run: sfdx force:mdapi:deploy --deploydir=convert -w 30
       - name: 'Installing SFDX scanner'
-      - name: 'install'
         run: sfdx plugins:install @salesforce/sfdx-scanner
-      - name: 'get in dir CD '
-        run: ls
-      - name: 'pwd '
-        run: pwd
-      - name: 'get in dir CD '
-        run: cd force-app/main/default
-      - name: 'get in dir CD '
-        run: ls
-      - name: 'pwd '
-        run: pwd
       - name: 'Run SFDX scanner'
-        run: sfdx scanner:run -target classes --outfile results.html
+        run: sfdx scanner:run --target  /force-app/main/default --outfile results.html
+
