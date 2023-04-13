@@ -24,5 +24,11 @@ jobs:
         run: ls
       - name: 'pwd '
         run: pwd
+      - name: 'get in dir CD '
+        run: cd force-app
+      - name: 'get in dir CD '
+        run: ls
+      - name: 'pwd '
+        run: pwd
       - name: 'Run SFDX scanner'
         run: sfdx scanner:run -target default/classes/BatchLeadConvert.cls --outfile results.html
