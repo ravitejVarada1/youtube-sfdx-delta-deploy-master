@@ -18,14 +18,12 @@ jobs:
           sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
       - name: 'Convert Metadata'
         run: sfdx force:source:convert --rootdir=force-app --outputdir=convert
-      - name: 'Run CD '
-        run: pwd
-      - name: 'get in dir CD '
+      - name: 'install'
         run: sfdx plugins:install @salesforce/sfdx-scanner
       - name: 'pwd '
         run: pwd
       - name: 'get in dir CD '
-        run: cd force-app/main
+        run: cd force-app/main/deafult
       - name: 'pwd '
         run: pwd
       - name: 'Run SFDX scanner'
